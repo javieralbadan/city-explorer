@@ -45,10 +45,10 @@ const options = computed(() =>
         v-model:value="searchQuery"
         :options="options"
         :filter-option="false"
-        @search="handleSearch"
-        @select="handleSelect"
         placeholder="Search for Dutch a city"
         class="w-full"
+        @search="handleSearch"
+        @select="handleSelect"
       >
         <template #notFoundContent>
           <div class="text-center py-2">No cities found</div>
