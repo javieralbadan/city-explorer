@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import UILoader from '@/components/UILoader.vue';
 import { useWeather } from '@/composables/useWeather';
+import type { City } from '@/types/cities';
 import type { Weather, WeatherResponse } from '@/types/weather';
 import { CloudOutlined } from '@ant-design/icons-vue';
 import { Card } from 'ant-design-vue';
 import { ref, watch } from 'vue';
-import type { City } from '~/types/cities';
 
 const props = defineProps<{
   city: City | null;

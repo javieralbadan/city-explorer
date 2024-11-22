@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import UILoader from '@/components/UILoader.vue';
 import cities from '@/static/city.list.json';
+import type { City } from '@/types/cities';
 import { AutoComplete } from 'ant-design-vue';
 import type { SelectHandler } from 'ant-design-vue/es/vc-select/Select';
 import { computed, ref } from 'vue';
-import type { City } from '~/types/cities';
 
 const searchQuery = ref<string>('');
 const filteredCities = ref<City[] | []>([]);

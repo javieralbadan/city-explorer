@@ -1,7 +1,7 @@
 <!-- eslint-disable no-undef -->
 <script setup lang="ts">
+import type { MapConfig, MapCoordinates } from '@/types/map';
 import { onMounted, ref, watch } from 'vue';
-import type { MapConfig, MapCoordinates } from '~/types/map';
 
 const CITY_ZOOM_MAP: number = 13;
 const DEFAULT_MAP_SETTINGS: MapConfig = {
