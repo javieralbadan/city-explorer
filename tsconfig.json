@@ -19,7 +19,7 @@
       "#app/*": [".nuxt/types/app/*"],
       "@/types/*": ["types/*"]
     },
-    "types": ["@nuxt/types", "@nuxtjs/tailwindcss"],
+    "types": ["@nuxt/types", "@nuxtjs/tailwindcss", "@types/google.maps"],
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,

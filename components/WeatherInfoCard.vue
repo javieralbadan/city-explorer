@@ -18,6 +18,7 @@ const fetchWeatherData = async (city: City | null) => {
   if (!city?.id) return;
 
   try {
+    loading.value = true;
     const { data, error: fetchError }: WeatherResponse = await useWeather(city?.id);
     if (fetchError) {
       error.value = fetchError;
@@ -26,6 +27,8 @@ const fetchWeatherData = async (city: City | null) => {
     }
   } catch (e) {
     error.value = e instanceof Error ? e.message : 'An unknown error occurred';
+  } finally {
+    loading.value = false;
   }
 };
 
@@ -35,13 +38,13 @@ watch(() => props.city, fetchWeatherData, { immediate: true });
 <template>
   <Card class="max-w-[400px] my-4 mx-auto text-center">
     <template #title>Weather {{ city?.name ? `in ${city.name}` : 'Information' }}</template>
-    <p v-if="error">Error: {{ error }}</p>
+    <p v-if="loading">Loading...</p>
+    <p v-else-if="error">Error: {{ error }}</p>
     <template v-else-if="weather">
       <p>Temperature: {{ weather.temperature }}°C</p>
       <p>Humidity: {{ weather.humidity }}%</p>
       <p>Description: {{ weather.description }}</p>
     </template>
-    <p v-else-if="loading">Loading...</p>
     <template v-else>
       <CloudOutlined class="text-center" style="font-size: 30px" />
       <p>Please search for a city to view weather information.</p>

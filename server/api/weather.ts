@@ -2,6 +2,9 @@ import { defineEventHandler, getQuery } from 'h3';
 import { $fetch } from 'ofetch';
 import type { WeatherAPIData, WeatherResponse } from '~/types/weather';
 
+const BASE_URL: string = 'https://api.openweathermap.org/data/2.5';
+const API_KEY = process.env.OPENWEATHER_API_KEY;
+
 export default defineEventHandler(async (event): Promise<WeatherResponse> => {
   const { cityId } = getQuery(event);
 
@@ -9,10 +12,8 @@ export default defineEventHandler(async (event): Promise<WeatherResponse> => {
     return { data: null, error: 'No cityId provided' };
   }
 
-  const apiKey = process.env.OPENWEATHER_API_KEY;
-  const endpoint = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
-
   try {
+    const endpoint = `${BASE_URL}/weather?id=${cityId}&units=metric&appid=${API_KEY}`;
     const response = await $fetch<WeatherAPIData>(endpoint);
 
     return {
