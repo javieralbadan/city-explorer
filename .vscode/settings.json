@@ -1,0 +1,31 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "prettier.requireConfig": true,
+  "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll"],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "tailwindCSS.experimental.configFile": "./tailwind.config.js",
+  "tailwindCSS.includeLanguages": {
+    "vue": "html"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.nuxt": true,
+    "**/node_modules": true,
+    "**/dist": true
+  },
+  "files.associations": {
+    "*.vue": "vue"
+  },
+  "search.exclude": {
+    "**/.nuxt": true,
+    "**/node_modules": true
+  },
+  "git.enableSmartCommit": true,
+  "git.inputValidationLength": 50,
+  "testing.openTesting": "neverOpen"
+}
