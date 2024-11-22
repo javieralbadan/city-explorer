@@ -24,7 +24,8 @@ export default defineEventHandler(async (event): Promise<WeatherResponse> => {
       },
       error: null,
     };
-  } catch (error) {
-    return { data: null, error: (error as Error).message || 'Failed to fetch weather data' };
+  } catch {
+    // Removing error message from API due to a bad message format
+    return { data: null, error: 'Failed to fetch weather data' };
   }
 });
