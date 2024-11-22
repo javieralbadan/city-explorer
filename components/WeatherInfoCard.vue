@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import UILoader from '@/components/UILoader.vue';
 import { useWeather } from '@/composables/useWeather';
 import type { Weather, WeatherResponse } from '@/types/weather';
 import { CloudOutlined } from '@ant-design/icons-vue';
@@ -38,8 +39,8 @@ watch(() => props.city, fetchWeatherData, { immediate: true });
 <template>
   <Card class="max-w-[400px] my-4 mx-auto text-center">
     <template #title>Weather {{ city?.name ? `in ${city.name}` : 'Information' }}</template>
-    <p v-if="loading">Loading...</p>
-    <p v-else-if="error">Error: {{ error }}</p>
+    <UILoader v-if="loading" />
+    <p v-else-if="error">{{ error }}</p>
     <template v-else-if="weather">
       <p>Temperature: {{ weather.temperature }}°C</p>
       <p>Humidity: {{ weather.humidity }}%</p>

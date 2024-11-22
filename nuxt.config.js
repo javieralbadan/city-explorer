@@ -1,6 +1,4 @@
 import { defineNuxtConfig } from 'nuxt/config';
-import Components from 'unplugin-vue-components/vite';
-import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 
 export default defineNuxtConfig({
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -38,10 +36,10 @@ export default defineNuxtConfig({
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['ant-design-vue/dist/reset.css'],
+  css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/antd'],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -56,14 +54,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-    transpile: ['ant-design-vue'],
-  },
-
-  vite: {
-    plugins: [Components({ resolvers: [AntDesignVueResolver()] })],
-    ssr: { noExternal: ['ant-design-vue'] },
-  },
+  build: {},
 
   devtools: { enabled: true },
 

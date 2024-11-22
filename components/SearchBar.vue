@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Loader from '@/components/Loader.vue';
+import UILoader from '@/components/UILoader.vue';
 import cities from '@/static/city.list.json';
 import { AutoComplete } from 'ant-design-vue';
 import type { SelectHandler } from 'ant-design-vue/es/vc-select/Select';
@@ -56,7 +56,7 @@ const options = computed(() =>
       </AutoComplete>
 
       <template #fallback>
-        <Loader />
+        <UILoader />
       </template>
     </ClientOnly>
   </div>

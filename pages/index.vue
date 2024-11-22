@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Loader from '@/components/Loader.vue';
 import MapView from '@/components/MapView.vue';
 import SearchBar from '@/components/SearchBar.vue';
+import UILoader from '@/components/UILoader.vue';
 import WeatherInfoCard from '@/components/WeatherInfoCard.vue';
 import type { City } from '@/types/cities';
 import { Layout, Typography } from 'ant-design-vue';
@@ -36,7 +36,7 @@ const handleOptionSelect = (city: City) => {
         <MapView :city-coordinates="cityCoordinates" />
 
         <template #fallback>
-          <Loader />
+          <UILoader />
         </template>
       </ClientOnly>
     </Content>
