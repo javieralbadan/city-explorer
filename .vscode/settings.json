@@ -13,10 +13,7 @@
     "vue": "html"
   },
   "files.exclude": {
-    "**/.git": true,
-    "**/.nuxt": true,
-    "**/node_modules": true,
-    "**/dist": true
+    "**/.git": true
   },
   "files.associations": {
     "*.vue": "vue"

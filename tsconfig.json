@@ -14,9 +14,12 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "#app": [".nuxt/types/app/index.d.ts"],
+      "#app/*": [".nuxt/types/app/*"],
+      "@/types/*": ["types/*"]
     },
-    "types": ["@types/node"],
+    "types": ["@nuxt/types", "@nuxtjs/tailwindcss"],
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,

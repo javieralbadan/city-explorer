@@ -31,12 +31,6 @@ export default [
       },
     },
   },
-  {
-    files: ['**/*.vue'],
-    languageOptions: {
-      parser: tseslint.parser,
-    },
-  },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   ...pluginVue.configs['flat/essential'],
@@ -46,6 +40,9 @@ export default [
   {
     files: ['**/*.vue'],
     languageOptions: { parserOptions: { parser: tseslint.parser } },
+    rules: {
+      'vue/multi-word-component-names': 'off',
+    },
   },
   {
     ignores: [

@@ -3,6 +3,13 @@ import Components from 'unplugin-vue-components/vite';
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      openWeatherMapApiKey: process.env.OPENWEATHERMAP_API_KEY,
+      mapboxApiKey: process.env.MAPBOX_API_KEY,
+      unsplashApiKey: process.env.UNSPLASH_API_KEY,
+    },
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   app: {
     head: {
