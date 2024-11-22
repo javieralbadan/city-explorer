@@ -3,14 +3,18 @@ import { $fetch } from 'ofetch';
 import type { WeatherAPIData, WeatherResponse } from '~/types/weather';
 
 export default defineEventHandler(async (event): Promise<WeatherResponse> => {
-  const { city = 'Amsterdam' } = getQuery(event);
+  const { cityId } = getQuery(event);
+
+  if (!cityId) {
+    return { data: null, error: 'No cityId provided' };
+  }
 
   const apiKey = process.env.OPENWEATHER_API_KEY;
-  const endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  const endpoint = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
 
   try {
     const response = await $fetch<WeatherAPIData>(endpoint);
-    console.log('🚀 ~ defineEventHandler ~ response:', response);
+
     return {
       data: {
         temperature: response.main.temp,
