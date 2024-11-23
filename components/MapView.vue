@@ -12,14 +12,12 @@ const DEFAULT_MAP_SETTINGS: MapConfig = {
 const props = defineProps<{
   cityCoordinates: MapCoordinates | null;
 }>();
-
-const map = ref<google.maps.Map | null>(null);
 const error = ref<string | null>(null);
 
 const initializeMap = async (mapConfig: MapConfig | null) => {
   try {
     const config = mapConfig || DEFAULT_MAP_SETTINGS;
-    map.value = new google.maps.Map(document.getElementById('map') as HTMLElement, config);
+    new google.maps.Map(document.getElementById('map') as HTMLElement, config);
   } catch (e) {
     error.value = e instanceof Error ? e.message : 'Failed to initialize map';
   }
@@ -44,6 +42,6 @@ onMounted(() => initializeMap(null));
 </script>
 
 <template>
-  <div v-if="error" class="text-red-500 text-center">Error: {{ error }}</div>
-  <div v-else id="map" class="h-[400px] w-full mb-4 rounded-lg shadow-md" />
+  <div v-if="!error" id="map" class="h-[400px] w-full mb-4 rounded-lg shadow-md" />
+  <div v-else class="text-red-600 text-center">Unable to load the map</div>
 </template>

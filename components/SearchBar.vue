@@ -2,18 +2,25 @@
 import UILoader from '@/components/UILoader.vue';
 import cities from '@/static/city.list.json';
 import type { City } from '@/types/cities';
+import { CloseCircleOutlined } from '@ant-design/icons-vue';
 import { AutoComplete } from 'ant-design-vue';
 import type { SelectHandler } from 'ant-design-vue/es/vc-select/Select';
 import { computed, ref } from 'vue';
 
 const searchQuery = ref<string>('');
 const filteredCities = ref<City[] | []>([]);
-const emit = defineEmits(['select']);
+const emit = defineEmits(['select', 'reset']);
+
+const resetState = () => {
+  searchQuery.value = '';
+  filteredCities.value = [];
+  emit('reset');
+};
 
 const handleSearch = async (query: string) => {
   searchQuery.value = query;
   if (!query) {
-    filteredCities.value = [];
+    resetState();
     return;
   }
 
@@ -39,14 +46,14 @@ const options = computed(() =>
 </script>
 
 <template>
-  <div class="search-bar max-w-[500px] mx-auto">
+  <div class="search-bar max-w-[500px] mx-auto relative">
     <ClientOnly>
       <AutoComplete
         v-model:value="searchQuery"
         :options="options"
         :filter-option="false"
         placeholder="Search for Dutch a city"
-        class="w-full"
+        class="w-full text-base"
         @search="handleSearch"
         @select="handleSelect"
       >
@@ -55,9 +62,21 @@ const options = computed(() =>
         </template>
       </AutoComplete>
 
+      <CloseCircleOutlined
+        v-if="searchQuery"
+        class="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 hover:text-gray-600"
+        @click="resetState()"
+      />
+
       <template #fallback>
         <UILoader />
       </template>
     </ClientOnly>
   </div>
 </template>
+
+<style scoped>
+.search-bar .ant-select-selector input {
+  font-size: 16px;
+}
+</style>

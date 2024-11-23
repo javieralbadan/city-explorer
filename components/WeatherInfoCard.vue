@@ -16,7 +16,10 @@ const error = ref<string | null>(null);
 const loading = ref<boolean>(false);
 
 const fetchWeatherData = async (city: City | null) => {
-  if (!city?.id) return;
+  if (!city?.id) {
+    weather.value = null;
+    return;
+  }
 
   try {
     loading.value = true;

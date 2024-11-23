@@ -25,6 +25,12 @@ const handleOptionSelect = (city: City) => {
     lng: city.coord.lon,
   };
 };
+
+const resetSelectedCity = () => {
+  citySelected.value = null;
+  cityName.value = '';
+  cityCoordinates.value = null;
+};
 </script>
 
 <template>
@@ -32,7 +38,7 @@ const handleOptionSelect = (city: City) => {
     <Content class="p-4 pb-6 sm:p-6 lg:p-8 mx-auto w-full">
       <Title :level="1" class="text-center my-8">City Explorer App</Title>
       <ClientOnly>
-        <SearchBar @select="handleOptionSelect" />
+        <SearchBar @select="handleOptionSelect" @reset="resetSelectedCity" />
         <WeatherInfoCard :city="citySelected" />
 
         <Title :level="4" class="text-center my-2">Location</Title>
