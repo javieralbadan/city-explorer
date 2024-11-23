@@ -6,5 +6,5 @@ export interface MapCoordinates {
 
 export interface MapConfig {
   center: MapCoordinates;
-  zoom: number;
+  zoom?: number;
 }
